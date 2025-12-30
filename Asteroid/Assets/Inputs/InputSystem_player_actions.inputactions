@@ -497,6 +497,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Rotate",
+                    "type": "Value",
+                    "id": "ca79c73b-3d6c-4fbf-afc5-aad2b845e646",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -580,7 +589,7 @@
                 {
                     "name": "left",
                     "id": "18a6955f-77cb-46b7-92e0-c86329eb84c8",
-                    "path": "<Keyboard>/a",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -591,7 +600,7 @@
                 {
                     "name": "left",
                     "id": "caf05db8-e549-4006-aba2-49c2bd94f056",
-                    "path": "<Keyboard>/leftArrow",
+                    "path": "<Keyboard>/7",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -602,7 +611,7 @@
                 {
                     "name": "right",
                     "id": "e953b31b-f873-455e-8fff-e91c94966995",
-                    "path": "<Keyboard>/d",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -613,7 +622,7 @@
                 {
                     "name": "right",
                     "id": "c5d22d4b-f5c3-4e9e-9c8c-777dd8540af3",
-                    "path": "<Keyboard>/rightArrow",
+                    "path": "<Keyboard>/9",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -642,6 +651,39 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "b79270d3-19ea-4877-91e9-a49467e15764",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Negative",
+                    "id": "eed72cc5-d6b3-42c5-b731-03778a7b95f0",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Positive",
+                    "id": "98bd120c-e3b6-49c7-b44a-f5f34cd25444",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

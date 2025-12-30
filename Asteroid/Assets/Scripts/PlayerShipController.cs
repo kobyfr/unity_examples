@@ -6,19 +6,31 @@ using UnityEngine.InputSystem;
 
 public class PlayerShipController : MonoBehaviour
 {
-    public float moveSpeed = 10f;
-    private Vector2 movementInput;
+    public float move_speed = 10f;
+    public float rotation_speed = 100f;
+
+    private Vector2 movement_input;
+    private float rotation_input;
 
     private void OnMove(InputValue value)
     {
         // Get movement input from the new Input System
-        movementInput = value.Get<Vector2>();
+        movement_input = value.Get<Vector2>();
+    }
+
+    private void OnRotate(InputValue value)
+    {
+        // Get rotation input from the new Input System
+        rotation_input = value.Get<float>();
     }
 
     private void Update()
     {
-        // Move the player_ship based on input
-        Vector3 movement = new Vector3(movementInput.x, 0, movementInput.y);
-        transform.Translate(moveSpeed * Time.deltaTime * movement , Space.World);
+        // Strafe the player_ship based on xy input
+        Vector3 movement = new Vector3(movement_input.x, 0, movement_input.y);
+        transform.Translate(move_speed * Time.deltaTime * movement , Space.Self);
+
+        // Rotate the player_ship based on rotation input
+        transform.Rotate(0, rotation_speed * Time.deltaTime * rotation_input, 0);
     }
 }
