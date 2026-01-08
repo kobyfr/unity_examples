@@ -9,7 +9,7 @@ using UnityEngine.Rendering;
 
 public class PlayerShipController : MonoBehaviour
 {
-    public float rotation_speed = 100f;
+    public float rotation_force = 100f;
     public float forward_movement_force_magnitude = 10f;
     public float side_movement_force_magnitude = 10f;
 
@@ -71,7 +71,8 @@ public class PlayerShipController : MonoBehaviour
         if (rotation_input != 0)
         {
             // Rotate the player_ship based on rotation input
-            rb.MoveRotation(Quaternion.Euler(0, transform.eulerAngles.y + rotation_speed * Time.deltaTime * rotation_input, 0));
+            Vector3 torque = new Vector3(0, rotation_input * rotation_force, 0);
+            rb.AddRelativeTorque(torque);
         }
     }
 }
