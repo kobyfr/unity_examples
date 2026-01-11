@@ -6,7 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/scene_selection.unity
+    guid: 44adbdbf230f6f847822c53b50d7aa11
+  - enabled: 1
+    path: Assets/Scenes/outside_asteroid.unity
+    guid: 5b417b4d8009f264db08483d9d99181b
+  - enabled: 1
+    path: Assets/Scenes/inside_asteroid.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
