@@ -346,9 +346,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 781143249}
-  - component: {fileID: 781143248}
   - component: {fileID: 781143247}
   - component: {fileID: 781143250}
+  - component: {fileID: 781143251}
   m_Layer: 0
   m_Name: Spaceship
   m_TagString: Untagged
@@ -386,21 +386,6 @@ MonoBehaviour:
   m_DefaultActionMap: player_ship
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &781143248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 781143246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e16b9ac3404f1d54aa015776e11e6aee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerShipController
-  rotation_force: 100
-  forward_movement_force_magnitude: 10
-  side_movement_force_magnitude: 10
 --- !u!4 &781143249
 Transform:
   m_ObjectHideFlags: 0
@@ -445,6 +430,21 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &781143251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781143246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a6a269c09c43f47bd5717344c881b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerShipController
+  rotation_force: 10
+  forward_movement_force_magnitude: 100
+  side_movement_force_magnitude: 20
 --- !u!1 &1372439848
 GameObject:
   m_ObjectHideFlags: 0

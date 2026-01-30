@@ -7,15 +7,14 @@ using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
 
-public class PlayerShipController : MonoBehaviour
+public class PlayerRoverController : MonoBehaviour
 {
     public float rotation_force = 100f;
     public float forward_movement_force_magnitude = 10f;
     public float side_movement_force_magnitude = 10f;
 
     private Vector2 movement_input;
-    // x = pitch (rotation around local X), y = yaw (rotation around local Y)
-    private Vector2 rotation_input;
+    private float rotation_input;
 
     private Vector2 collision_force = Vector2.zero;
 
@@ -26,7 +25,7 @@ public class PlayerShipController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         if (rb == null)
         {
-            Debug.LogError("PlayerShipController requires a Rigidbody component.");
+            Debug.LogError("PlayerRoverController requires a Rigidbody component.");
         }
     }
 
@@ -56,15 +55,10 @@ public class PlayerShipController : MonoBehaviour
         // movement_input = new Vector2(worldInput.x, worldInput.z);
     }
 
-    private void OnLook(InputValue value)
+    private void OnRotate(InputValue value)
     {
-        // Mouse movement (pointer delta) from the new Input System
-        Vector2 mouseDelta = value.Get<Vector2>();
-
-        // map vertical mouse movement to pitch (invert so moving mouse up looks up)
-        float pitch = -mouseDelta.y;
-        float yaw = mouseDelta.x;
-        rotation_input = new Vector2(pitch, yaw).normalized;
+        // Get rotation input from the new Input System
+        rotation_input = value.Get<float>();
     }
 
     private void FixedUpdate() 
@@ -76,11 +70,11 @@ public class PlayerShipController : MonoBehaviour
         Vector3 movement_force = new Vector3(movement_input.x * side_movement_force_magnitude, 0, movement_input.y * forward_movement_force_magnitude);
         rb.AddRelativeForce(movement_force);
 
-        // Rotate the player_ship based on pitch (X) and yaw (Y) input
-        if (rotation_input.magnitude > 0.000001f)
+        if (rotation_input != 0)
         {
-            Vector3 torque = new Vector3(rotation_input.x * rotation_force, rotation_input.y * rotation_force, 0);
-            rb.AddRelativeTorque(torque, ForceMode.Acceleration);
+            // Rotate the player_ship based on rotation input
+            Vector3 torque = new Vector3(0, rotation_input * rotation_force, 0);
+            rb.AddRelativeTorque(torque);
         }
     }
 }
