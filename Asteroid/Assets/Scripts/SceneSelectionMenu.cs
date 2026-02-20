@@ -10,6 +10,13 @@ public class SceneSelectionMenu : MonoBehaviour
     private float lastClickTime;
     private const float doubleClickThreshold = 0.3f;
 
+    public static SceneSelectionMenu Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Start()
     {
         list_box = GetComponentInChildren<TMP_Dropdown>();
@@ -37,10 +44,17 @@ public class SceneSelectionMenu : MonoBehaviour
         }
         list_box.RefreshShownValue();
     }
+
+
     public void OnLoadScene()
     {
         selectedScene = list_box.options[list_box.value].text;
         if (!string.IsNullOrEmpty(selectedScene))
+        {
+            Debug.Log("Loading scene: " + selectedScene);
             SceneManager.LoadScene(selectedScene);
+            GlobalSceneLoader.instance.CaptureMouse();
+        }
+
     }
 }

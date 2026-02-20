@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 339940378663585875}
   - component: {fileID: 6989993077956203888}
+  - component: {fileID: 1437515229882486571}
   m_Layer: 0
   m_Name: GlobalEventManager
   m_TagString: Untagged
@@ -45,3 +46,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GlobalSceneLoader
   sceneToLoad: scene_selection
+--- !u!114 &1437515229882486571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830977492720082509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5181547b866bfe94b8106584733e5a22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LogToFile

@@ -349,6 +349,7 @@ GameObject:
   - component: {fileID: 781143247}
   - component: {fileID: 781143250}
   - component: {fileID: 781143251}
+  - component: {fileID: 781143252}
   m_Layer: 0
   m_Name: Spaceship
   m_TagString: Untagged
@@ -395,12 +396,12 @@ Transform:
   m_GameObject: {fileID: 781143246}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 338.34, y: 0, z: -83.1}
+  m_LocalPosition: {x: 343.54, y: 0, z: -83.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1372439854}
   - {fileID: 522272141}
+  - {fileID: 1372439854}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &781143250
@@ -442,35 +443,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67a6a269c09c43f47bd5717344c881b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShipController
-  rotation_force: 10
+  rotation_force: 300
   forward_movement_force_magnitude: 100
-  side_movement_force_magnitude: 20
---- !u!1 &1372439848
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1372439854}
-  - component: {fileID: 1372439853}
-  - component: {fileID: 1372439852}
-  - component: {fileID: 1372439851}
-  m_Layer: 0
-  m_Name: Intergalactic Spaceship model
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!64 &1372439851
+  side_movement_force_magnitude: 35
+--- !u!64 &781143252
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1372439848}
+  m_GameObject: {fileID: 781143246}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -486,6 +468,24 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 2e9c70f1d4d952d468f485be07800f25, type: 3}
+--- !u!1 &1372439848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1372439854}
+  - component: {fileID: 1372439853}
+  - component: {fileID: 1372439852}
+  m_Layer: 0
+  m_Name: Intergalactic Spaceship model
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!23 &1372439852
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -553,7 +553,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 125.33396, z: 99.999985}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 781143249}
