@@ -14,9 +14,11 @@ public class PlayerShipController : MonoBehaviour
     public float rotation_force = 100f;
     public float forward_movement_force_magnitude = 10f;
     public float side_movement_force_magnitude = 10f;
+    public float up_down_movement_force = 10f;
     public InputActionAsset actions;
 
     private Vector2 movement_input;
+    private float movement_up_down_input;
 
     private Vector2 collision_force = Vector2.zero;
 
@@ -25,14 +27,25 @@ public class PlayerShipController : MonoBehaviour
     private readonly float min_look_delta = 0.000001f;
 
     private InputAction moveAction;
+    private InputAction moveUpDownAction;
 
 
-    private void OnEnable() => moveAction.Enable();
-    private void OnDisable() => moveAction.Disable();
+    private void OnEnable()
+    {
+        moveAction.Enable();
+        moveUpDownAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        moveAction.Disable();
+        moveUpDownAction.Disable();
+    }
 
     private void Awake()
     {
         moveAction = actions.FindAction("player_ship/Move");
+        moveUpDownAction = actions.FindAction("player_ship/MoveUpDown");
     }
 
     private void Start()
@@ -98,7 +111,9 @@ public class PlayerShipController : MonoBehaviour
     void Update()
     {
         movement_input = moveAction.ReadValue<Vector2>();
+        movement_up_down_input = moveUpDownAction.ReadValue<float>();
         Debug.Log(movement_input);
+        Debug.Log(movement_up_down_input);
     }
 
     private void FixedUpdate() 
@@ -106,8 +121,11 @@ public class PlayerShipController : MonoBehaviour
         if (rb == null)
             return;
 
-        // Strafe the player_ship based on xy input, or according to the collision force if there was a recent collision
-        Vector3 movement_force = new Vector3(movement_input.x * side_movement_force_magnitude, 0, movement_input.y * forward_movement_force_magnitude);
+        // Strafe the player_ship based on xy input
+        // Strafe the player_ship based on z input
+        Vector3 movement_force = new Vector3(movement_input.x       * side_movement_force_magnitude, 
+                                             movement_up_down_input * up_down_movement_force, 
+                                             movement_input.y       * forward_movement_force_magnitude);
         rb.AddRelativeForce(movement_force);
 
         // Apply rotation of the look vector, and zeroize the look input

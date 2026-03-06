@@ -446,6 +446,8 @@ MonoBehaviour:
   rotation_force: 300
   forward_movement_force_magnitude: 100
   side_movement_force_magnitude: 35
+  up_down_movement_force: 35
+  actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!64 &781143252
 MeshCollider:
   m_ObjectHideFlags: 0
