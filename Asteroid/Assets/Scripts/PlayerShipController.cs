@@ -15,37 +15,42 @@ public class PlayerShipController : MonoBehaviour
     public float forward_movement_force_magnitude = 10f;
     public float side_movement_force_magnitude = 10f;
     public float up_down_movement_force = 10f;
+    public float roll_force = 10f;
     public InputActionAsset actions;
 
     private Vector2 movement_input;
     private float movement_up_down_input;
+    private float roll_input;
 
     private Vector2 collision_force = Vector2.zero;
 
     private Rigidbody rb;
     private Vector2 look = Vector2.zero;
-    private readonly float min_look_delta = 0.000001f;
+    private readonly float min_rotation_delta = 0.000001f;
 
     private InputAction moveAction;
     private InputAction moveUpDownAction;
-
+    private InputAction roll_action;
 
     private void OnEnable()
     {
         moveAction.Enable();
         moveUpDownAction.Enable();
+        roll_action.Enable();
     }
 
     private void OnDisable()
     {
         moveAction.Disable();
         moveUpDownAction.Disable();
+        roll_action.Disable();
     }
 
     private void Awake()
     {
         moveAction = actions.FindAction("player_ship/Move");
         moveUpDownAction = actions.FindAction("player_ship/MoveUpDown");
+        roll_action = actions.FindAction("player_ship/Roll");
     }
 
     private void Start()
@@ -102,7 +107,7 @@ public class PlayerShipController : MonoBehaviour
         float pitch = -pointer_delta.y;
         float yaw = pointer_delta.x;
         Vector2 temp_look = new Vector2(pitch, yaw).normalized;
-        if ( temp_look.magnitude > min_look_delta)
+        if ( temp_look.magnitude > min_rotation_delta)
         {
             look = new Vector2(pitch, yaw).normalized;
         }
@@ -112,8 +117,11 @@ public class PlayerShipController : MonoBehaviour
     {
         movement_input = moveAction.ReadValue<Vector2>();
         movement_up_down_input = moveUpDownAction.ReadValue<float>();
+        roll_input = roll_action.ReadValue<float>();
+
         Debug.Log(movement_input);
         Debug.Log(movement_up_down_input);
+        Debug.Log(roll_input);
     }
 
     private void FixedUpdate() 
@@ -128,16 +136,23 @@ public class PlayerShipController : MonoBehaviour
                                              movement_input.y       * forward_movement_force_magnitude);
         rb.AddRelativeForce(movement_force);
 
-        // Apply rotation of the look vector, and zeroize the look input
+        // Apply rotation (pitch/yaw) of the look vector, and zeroize the look input
         ApplyLook(look);
         look = Vector3.zero;
+
+        // Apply roll input
+        if (Mathf.Abs(roll_input) > min_rotation_delta)
+        {
+            float roll_torque = roll_input * roll_force;
+            rb.AddRelativeTorque(new Vector3(0, 0, roll_torque), ForceMode.Acceleration);
+        }
     }
 
     void ApplyLook(Vector2 look)
     {
-        if (look.magnitude > min_look_delta)
+        if (look.magnitude > min_rotation_delta)
         {
-            Debug.LogFormat("look.magnitude > 0.000001f {0}", look);
+            Debug.LogFormat("look.magnitude > {1}, {0}", look, min_rotation_delta);
             float force_delta = Time.deltaTime * rotation_force;
             Vector3 torque = new Vector3(look.x * force_delta, look.y * force_delta, 0);
             rb.AddRelativeTorque(torque, ForceMode.Acceleration);
