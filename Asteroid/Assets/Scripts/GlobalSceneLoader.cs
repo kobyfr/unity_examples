@@ -110,13 +110,11 @@ public class GlobalSceneLoader : MonoBehaviour
         ReleaseMouse();
     }
 
-    private void LoadRelativeScene(int offset)
+    public void LoadScene(int scene_index)
     {
-        int scene_to_load_index = (SceneManager.GetActiveScene().buildIndex + offset + SceneManager.sceneCountInBuildSettings) % 
-                                   SceneManager.sceneCountInBuildSettings;
-        SceneManager.LoadScene(scene_to_load_index);
-        string scene_name = SceneManager.GetSceneByBuildIndex(scene_to_load_index).name;
-        gameInfoDisplay.update_scene_name(scene_name);
+        SceneManager.LoadScene(scene_index);
+        string scene_name = SceneManager.GetSceneByBuildIndex(scene_index).name;
+        gameInfoDisplay.update_scene_name(string.Format("{0} : {1}", scene_index, scene_name));
         if (scene_name != "scene_selection")
         {
             CaptureMouse();
@@ -125,6 +123,12 @@ public class GlobalSceneLoader : MonoBehaviour
         {
             ReleaseMouse();
         }
+    }
+    private void LoadRelativeScene(int offset)
+    {
+        int scene_to_load_index = (SceneManager.GetActiveScene().buildIndex + offset + SceneManager.sceneCountInBuildSettings) % 
+                                   SceneManager.sceneCountInBuildSettings;
+        LoadScene(scene_to_load_index);
     }
 
     void ReleaseMouse()

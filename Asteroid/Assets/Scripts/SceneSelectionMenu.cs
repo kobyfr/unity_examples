@@ -51,9 +51,8 @@ public class SceneSelectionMenu : MonoBehaviour
         selectedScene = list_box.options[list_box.value].text;
         if (!string.IsNullOrEmpty(selectedScene))
         {
-            Debug.Log("Loading scene: " + selectedScene);
-            SceneManager.LoadScene(selectedScene);
-            GlobalSceneLoader.instance.CaptureMouse();
+            int selected_scene_index = list_box.value;
+            GlobalSceneLoader.instance.LoadScene(selected_scene_index);
         }
 
     }
