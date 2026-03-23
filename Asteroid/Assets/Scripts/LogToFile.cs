@@ -1,6 +1,8 @@
 using System;
 using System.IO;
 using UnityEngine;
+using static Unity.Burst.Intrinsics.X86;
+using static UnityEngine.Rendering.GPUSort;
 
 // Simple singleton runtime logger that writes to a file in Application.persistentDataPath
 public class LogToFile : MonoBehaviour
@@ -98,7 +100,26 @@ public class LogToFile : MonoBehaviour
         catch (Exception) { }
     }
 
-    public void Log(string message)
+    public static void Log(int n)
+    {
+        LogFormat("{0}", n);
+    }
+    public static void Log(float f)
+    {
+        LogFormat("{0}", f);
+    }
+
+    public static void Log(Vector2 v2)
+    {
+        LogFormat("{0}", v2);
+    }
+
+    public static void Log(Vector3 v3)
+    {
+        LogFormat("{0}", v3);
+    }
+
+    public static void Log(string message)
     {
         try
         {
@@ -109,13 +130,13 @@ public class LogToFile : MonoBehaviour
             }
             else
             {
-                lock (writeLock) { writer?.WriteLine(message); }
+                lock (Instance.writeLock) { Instance.writer?.WriteLine(message); }
             }
         }
         catch (Exception) { }
     }
 
-    public void LogFormat(string fmt, params object[] args)
+    public static void LogFormat(string fmt, params object[] args)
     {
         var msg = string.Format(fmt, args);
         Log(msg);

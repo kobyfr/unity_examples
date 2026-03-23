@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - terrain
+  - spaceship
   layers:
   - Default
   - TransparentFX

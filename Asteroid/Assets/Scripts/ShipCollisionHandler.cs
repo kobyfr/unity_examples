@@ -18,7 +18,7 @@ public class ShipCollisionHandler : MonoBehaviour
         // Check if the collision is with the terrain
         if (other.CompareTag("terrain"))
         {
-            Debug.Log("trigger enter, with terrain!");
+            LogToFile.Log("trigger enter, with terrain!");
             // Handle collision logic here
         }
     }
@@ -28,7 +28,7 @@ public class ShipCollisionHandler : MonoBehaviour
         // Check if the collision is with the terrain
         if (collision.collider.CompareTag("terrain"))
         {
-            Debug.Log("Collision detected with terrain!");
+            LogToFile.Log("Collision detected with terrain!");
             player_ship_controller.handle_terrain_collision(collision.collider);
         }
 

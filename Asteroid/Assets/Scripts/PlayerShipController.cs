@@ -61,13 +61,13 @@ public class PlayerShipController : MonoBehaviour
             Debug.LogError("PlayerShipController requires a Rigidbody component.");
         }
         // Note controller start using Unity's Debug logging
-        Debug.LogFormat("PlayerShipController Start: time:{0}", Time.time);
+        LogToFile.LogFormat("PlayerShipController Start: time:{0}", Time.time);
 
         // Log input devices and watch for device changes
         try
         {
             InputSystem.onDeviceChange += OnDeviceChange;
-            Debug.LogFormat("Current devices: {0}", string.Join(", ", InputSystem.devices));
+            LogToFile.LogFormat("Current devices: {0}", string.Join(", ", InputSystem.devices));
         }
         catch (Exception e)
         {
@@ -90,7 +90,7 @@ public class PlayerShipController : MonoBehaviour
     }
     private void OnDeviceChange(InputDevice device, InputDeviceChange change)
     {
-        Debug.LogFormat("Device change: {0} {1}", device, change);
+        LogToFile.LogFormat("Device change: {0} {1}", device, change);
     }
 
     private void OnMove(InputValue value)
@@ -107,7 +107,7 @@ public class PlayerShipController : MonoBehaviour
         float pitch = -pointer_delta.y;
         float yaw = pointer_delta.x;
         Vector2 temp_look = new Vector2(pitch, yaw).normalized;
-        if ( temp_look.magnitude > min_rotation_delta)
+        if (temp_look.magnitude > min_rotation_delta)
         {
             look = new Vector2(pitch, yaw).normalized;
         }
@@ -119,21 +119,21 @@ public class PlayerShipController : MonoBehaviour
         movement_up_down_input = moveUpDownAction.ReadValue<float>();
         roll_input = roll_action.ReadValue<float>();
 
-        Debug.Log(movement_input);
-        Debug.Log(movement_up_down_input);
-        Debug.Log(roll_input);
+        // LogToFile.Log(movement_input);
+        // LogToFile.Log(movement_up_down_input);
+        // LogToFile.Log(roll_input);
     }
 
-    private void FixedUpdate() 
+    private void FixedUpdate()
     {
         if (rb == null)
             return;
 
         // Strafe the player_ship based on xy input
         // Strafe the player_ship based on z input
-        Vector3 movement_force = new Vector3(movement_input.x       * side_movement_force_magnitude, 
-                                             movement_up_down_input * up_down_movement_force, 
-                                             movement_input.y       * forward_movement_force_magnitude);
+        Vector3 movement_force = new Vector3(movement_input.x * side_movement_force_magnitude,
+                                             movement_up_down_input * up_down_movement_force,
+                                             movement_input.y * forward_movement_force_magnitude);
         rb.AddRelativeForce(movement_force);
 
         // Apply rotation (pitch/yaw) of the look vector, and zeroize the look input
@@ -152,14 +152,20 @@ public class PlayerShipController : MonoBehaviour
     {
         if (look.magnitude > min_rotation_delta)
         {
-            Debug.LogFormat("look.magnitude > {1}, {0}", look, min_rotation_delta);
+            // LogToFile.LogFormat("look.magnitude > {1}, {0}", look, min_rotation_delta);
             float force_delta = Time.deltaTime * rotation_force;
             Vector3 torque = new Vector3(look.x * force_delta, look.y * force_delta, 0);
             rb.AddRelativeTorque(torque, ForceMode.Acceleration);
         }
         else
         {
-            // Debug.Log("look vector too small");
+            // LogToFile.Log("look vector too small");
         }
     }
+
+     public void OnLandingPadEntered(LandingPad landingPad)
+    {
+        LogToFile.Log("Getting close to landing pad: " + landingPad.name);
+    }
+
 }

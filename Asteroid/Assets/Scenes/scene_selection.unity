@@ -1977,6 +1977,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5096311860418698390, guid: 07468d1c0e252a748be1de7f968b3a48, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7421672802854009361, guid: 07468d1c0e252a748be1de7f968b3a48, type: 3}
       propertyPath: m_Name
       value: Status Screen

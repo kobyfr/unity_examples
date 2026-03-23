@@ -39,7 +39,7 @@ public class GameInfoDisplay: MonoBehaviour
     {
         // Display the application version
         versionText.text = $"Version: {Application.version}";
-        Debug.Log($"GameInfoDisplay start. sceneText.text: {sceneText.text}");
+        LogToFile.Log($"GameInfoDisplay start. sceneText.text: {sceneText.text}");
     }
 
     private void Update()
@@ -52,10 +52,10 @@ public class GameInfoDisplay: MonoBehaviour
 
     public void update_scene_name(string sceneName)
     {
-        Debug.Log($"GameInfoDisplay before update_scene_name. sceneName:      {sceneName}");
-        Debug.Log($"GameInfoDisplay before update_scene_name. sceneText.text: {sceneText.text}");
+        LogToFile.Log($"GameInfoDisplay before update_scene_name. sceneName:      {sceneName}");
+        LogToFile.Log($"GameInfoDisplay before update_scene_name. sceneText.text: {sceneText.text}");
         scene_name = sceneName;
         sceneText.text = scene_name;
-        Debug.Log($"GameInfoDisplay after  update_scene_name. sceneText.text: {sceneText.text}");
+        LogToFile.Log($"GameInfoDisplay after  update_scene_name. sceneText.text: {sceneText.text}");
     }
 }

@@ -229,6 +229,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c931c874a71c9284cbdeb0b253117602, type: 3}
       insertIndex: -1
       addedObject: {fileID: 650388002}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c931c874a71c9284cbdeb0b253117602, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 650388006}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c931c874a71c9284cbdeb0b253117602, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 650388007}
     - targetCorrespondingSourceObject: {fileID: 2856176047129400152, guid: c931c874a71c9284cbdeb0b253117602, type: 3}
       insertIndex: -1
       addedObject: {fileID: 540870973}
@@ -630,6 +636,39 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3628060710862482950, guid: c931c874a71c9284cbdeb0b253117602, type: 3}
+--- !u!114 &650388006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650387998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be24bca9006d54d4f94ae41cc0c1e94c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!65 &650388007
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650387998}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.03, y: 0.03, z: 0.3}
+  m_Center: {x: 0, y: 0, z: 0.22}
 --- !u!1 &699393872 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1856775147422935914, guid: c931c874a71c9284cbdeb0b253117602, type: 3}
@@ -698,7 +737,7 @@ GameObject:
   - component: {fileID: 781143251}
   m_Layer: 0
   m_Name: Spaceship
-  m_TagString: Untagged
+  m_TagString: spaceship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -863,7 +902,7 @@ GameObject:
   - component: {fileID: 1372439855}
   m_Layer: 0
   m_Name: Intergalactic Spaceship model
-  m_TagString: Untagged
+  m_TagString: spaceship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

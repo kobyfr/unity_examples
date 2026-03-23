@@ -133,13 +133,13 @@ public class GlobalSceneLoader : MonoBehaviour
 
     void ReleaseMouse()
     {
-        Debug.Log("Releasing mouse");
+        LogToFile.Log("Releasing mouse");
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
     public void CaptureMouse()
     {
-        Debug.Log("Capturing mouse");
+        LogToFile.Log("Capturing mouse");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
